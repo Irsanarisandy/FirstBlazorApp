@@ -1,6 +1,6 @@
 ﻿@page "/todo"
 
-@using FirstBlazorApp.Data
+@inherits Logic.TodoLogic
 
 <h1>Todo (@todos.Count(todo => !todo.IsDone))</h1>
 
@@ -16,17 +16,3 @@
         </li>
     }
 </ul>
-
-@code {
-    private IList<TodoItem> todos = new List<TodoItem>();
-    private string newTodo;
-
-    private void AddTodo()
-    {
-        if (!string.IsNullOrWhiteSpace(newTodo))
-        {
-            todos.Add(new TodoItem { Title = newTodo });
-            newTodo = string.Empty;
-        }
-    }
-}
